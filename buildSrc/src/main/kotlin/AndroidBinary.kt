@@ -1,3 +1,7 @@
+import com.android.build.api.dsl.ApplicationExtension
+import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.configure
+
 /*
  * Copyright 2021 Arunkumar
  *
@@ -14,28 +18,17 @@
  * limitations under the License.
  */
 
-plugins {
-  id "android-binary"
-}
+class AndroidBinary : ConfigurablePlugin({
+  apply(plugin = "com.android.application")
 
-android {
-  buildFeatures {
-    compose true
+  androidCommon()
+
+  configure<ApplicationExtension> {
+    defaultConfig {
+      applicationId = "dev.arunkumar.relic"
+      versionCode = 1
+      versionName = "1.0"
+    }
   }
-}
+})
 
-dependencies {
-  implementation(deps.androidx.core)
-  implementation(deps.androidx.lifecycle)
-  implementation(deps.androidx.activity.compose)
-
-  implementation(deps.compose.material)
-  implementation(deps.compose.ui.ui)
-  implementation(deps.compose.ui.toolingpreview)
-  debugImplementation(deps.compose.ui.tooling)
-
-  testImplementation(deps.junit)
-  androidTestImplementation(deps.androidx.junit)
-  androidTestImplementation(deps.androidx.espresso)
-  androidTestImplementation(deps.compose.ui.test)
-}

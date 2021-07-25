@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.apply
+
 /*
  * Copyright 2021 Arunkumar
  *
@@ -14,28 +16,8 @@
  * limitations under the License.
  */
 
-plugins {
-  id "android-binary"
-}
+class AndroidLibrary : ConfigurablePlugin({
+  apply(plugin = "com.android.library")
 
-android {
-  buildFeatures {
-    compose true
-  }
-}
-
-dependencies {
-  implementation(deps.androidx.core)
-  implementation(deps.androidx.lifecycle)
-  implementation(deps.androidx.activity.compose)
-
-  implementation(deps.compose.material)
-  implementation(deps.compose.ui.ui)
-  implementation(deps.compose.ui.toolingpreview)
-  debugImplementation(deps.compose.ui.tooling)
-
-  testImplementation(deps.junit)
-  androidTestImplementation(deps.androidx.junit)
-  androidTestImplementation(deps.androidx.espresso)
-  androidTestImplementation(deps.compose.ui.test)
-}
+  androidCommon()
+})

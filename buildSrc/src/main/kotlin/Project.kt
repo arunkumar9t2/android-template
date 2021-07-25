@@ -1,3 +1,9 @@
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.kotlin.dsl.getByType
+
 /*
  * Copyright 2021 Arunkumar
  *
@@ -14,28 +20,10 @@
  * limitations under the License.
  */
 
-plugins {
-  id "android-binary"
+open class ConfigurablePlugin(private val configuration: Project.() -> Unit) : Plugin<Project> {
+  override fun apply(project: Project): Unit = configuration(project)
 }
 
-android {
-  buildFeatures {
-    compose true
-  }
-}
+val Project.catalogs get() = extensions.getByType<VersionCatalogsExtension>()
 
-dependencies {
-  implementation(deps.androidx.core)
-  implementation(deps.androidx.lifecycle)
-  implementation(deps.androidx.activity.compose)
-
-  implementation(deps.compose.material)
-  implementation(deps.compose.ui.ui)
-  implementation(deps.compose.ui.toolingpreview)
-  debugImplementation(deps.compose.ui.tooling)
-
-  testImplementation(deps.junit)
-  androidTestImplementation(deps.androidx.junit)
-  androidTestImplementation(deps.androidx.espresso)
-  androidTestImplementation(deps.compose.ui.test)
-}
+val Project.libs: VersionCatalog get() = catalogs.named("deps")
