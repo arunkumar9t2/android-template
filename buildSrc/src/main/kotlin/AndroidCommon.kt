@@ -59,6 +59,14 @@ internal fun Project.androidCommon() {
     composeOptions {
       kotlinCompilerExtensionVersion = deps.findVersion("compose").get().toString()
     }
+
+    packagingOptions {
+      resources.excludes += listOf(
+        "META-INF/AL2.0",
+        "META-INF/LGPL2.1",
+        "META-INF/licenses/**"
+      )
+    }
   }
 
   tasks.withType<KotlinCompile>().configureEach {
