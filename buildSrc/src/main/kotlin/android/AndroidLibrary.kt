@@ -14,16 +14,13 @@
  * limitations under the License.
  */
 
-import org.gradle.api.Plugin
-import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalog
-import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.kotlin.dsl.getByType
+package android
 
-open class ConfigurablePlugin(private val configuration: Project.() -> Unit) : Plugin<Project> {
-  override fun apply(project: Project): Unit = configuration(project)
-}
+import gradle.ConfigurablePlugin
+import org.gradle.kotlin.dsl.apply
 
-val Project.catalogs get() = extensions.getByType<VersionCatalogsExtension>()
+class AndroidLibrary : ConfigurablePlugin({
+  apply(plugin = "com.android.library")
 
-val Project.deps: VersionCatalog get() = catalogs.named("deps")
+  androidCommon()
+})

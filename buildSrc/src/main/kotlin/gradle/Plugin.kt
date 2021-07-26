@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import org.gradle.kotlin.dsl.apply
+package gradle
 
-class AndroidLibrary : ConfigurablePlugin({
-  apply(plugin = "com.android.library")
+import org.gradle.api.Plugin
+import org.gradle.api.Project
 
-  androidCommon()
-})
+open class ConfigurablePlugin(private val configuration: Project.() -> Unit) : Plugin<Project> {
+  override fun apply(project: Project): Unit = configuration(project)
+}

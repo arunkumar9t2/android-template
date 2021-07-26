@@ -14,26 +14,18 @@
  * limitations under the License.
  */
 
-plugins {
-  id("java-gradle-plugin")
-  `kotlin-dsl`
-}
+package gradle
 
-gradlePlugin {
-  plugins {
-    create("androidLibrary") {
-      id = "android-library"
-      implementationClass = "android.AndroidLibrary"
-    }
-    create("androidBinary") {
-      id = "android-binary"
-      implementationClass = "android.AndroidBinary"
-    }
-  }
-}
+import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.kotlin.dsl.getByType
 
-dependencies {
-  implementation(deps.agp)
-  implementation(deps.kotlin)
-  implementation(deps.spotless)
-}
+
+val Project.catalogs get() = extensions.getByType<VersionCatalogsExtension>()
+
+val Project.deps: VersionCatalog get() = catalogs.named("deps")
+
+fun VersionCatalog.version(reference: String): String? = findVersion(reference)
+  .orElse(null)
+  ?.toString()

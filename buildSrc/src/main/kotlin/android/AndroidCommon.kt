@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+package android
+
 import com.android.build.gradle.BaseExtension
+import gradle.deps
+import gradle.version
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -47,7 +51,10 @@ internal fun Project.androidCommon() {
     buildTypes {
       named(RELEASE_VARIANT) {
         minifyEnabled(true)
-        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        proguardFiles(
+          getDefaultProguardFile("proguard-android-optimize.txt"),
+          "proguard-rules.pro"
+        )
       }
     }
 
@@ -57,7 +64,7 @@ internal fun Project.androidCommon() {
     }
 
     composeOptions {
-      kotlinCompilerExtensionVersion = deps.findVersion("compose").get().toString()
+      kotlinCompilerExtensionVersion = deps.version("compose")!!
     }
 
     packagingOptions {

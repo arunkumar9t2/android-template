@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
+package android
+
 import com.android.build.api.dsl.ApplicationExtension
+import gradle.ConfigurablePlugin
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
