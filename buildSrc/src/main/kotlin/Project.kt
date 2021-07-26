@@ -26,4 +26,4 @@ open class ConfigurablePlugin(private val configuration: Project.() -> Unit) : P
 
 val Project.catalogs get() = extensions.getByType<VersionCatalogsExtension>()
 
-val Project.libs: VersionCatalog get() = catalogs.named("deps")
+val Project.deps: VersionCatalog get() = catalogs.named("deps")
