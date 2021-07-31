@@ -9,7 +9,7 @@ on:
       - 'docker/**'
       - 'gradle**'
       - '**.gradle'
-      - 'buildSrc/**`
+      - 'buildSrc/**'
 
 jobs:
   publish-docker:
