@@ -35,12 +35,11 @@ jobs:
           find $GRADLE_USER_HOME -name "gc.properties" -type f -delete
 
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@2.14
+        uses: elgohr/Publish-Docker-Github-Action@3.04
         with:
           name: ${{ github.repository }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
           workdir: ${{ github.workspace }}/docker\
-          tags: "latest"
           dockerfile: Dockerfile
