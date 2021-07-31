@@ -26,9 +26,9 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val ANDROID_COMPILE_SDK = 31
+val ANDROID_COMPILE_SDK = 30
 val ANDROID_MIN_SDK = 25
-val ANDROID_TARGET_SDK = 31
+val ANDROID_TARGET_SDK = 30
 
 val RELEASE_VARIANT = "release"
 
