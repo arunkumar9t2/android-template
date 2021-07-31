@@ -3,7 +3,7 @@ name: Gradle docker image workflow
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - '.github/workflows/docker.yml'
       - 'docker/**'
