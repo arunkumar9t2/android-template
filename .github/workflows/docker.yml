@@ -1,4 +1,4 @@
-name: Docker workflow
+name: Docker Workflow
 
 on:
   push:
@@ -41,5 +41,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-          workdir: ${{ github.workspace }}/docker\
+          workdir: docker
           dockerfile: Dockerfile
