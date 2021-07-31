@@ -1,4 +1,4 @@
-name: Gradle docker image workflow
+name: Docker workflow
 
 on:
   push:
@@ -15,13 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
+      - name: Set up Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: 11
 
-      - name: Set gradle permissions
+      - name: Set Gradle permissions
         run: sudo chmod +x ./gradlew
 
       - name: Prepare Gradle

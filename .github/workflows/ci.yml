@@ -1,8 +1,6 @@
-name: CI
+name: Default CI Workflow
 
 on: [ push,pull_request ]
-  paths:
-    - '!docker/**'
 
 jobs:
   lint:
