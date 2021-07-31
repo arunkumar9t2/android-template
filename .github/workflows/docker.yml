@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - '.github/workflows/gradle_docker.yml'
+      - '.github/workflows/docker.yml'
       - 'docker/**'
       - 'gradle**'
       - '**.gradle'
