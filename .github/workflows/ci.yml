@@ -18,7 +18,7 @@ jobs:
           job-id: lint
           gradle-version: wrapper
           gradle-dependencies-cache-key: gradle/libs.versions.toml
-          arguments: :lintDebug
+          arguments: app:lintDebug
   build:
     runs-on: ubuntu-latest
     container:
@@ -51,4 +51,4 @@ jobs:
           job-id: build
           gradle-version: wrapper
           gradle-dependencies-cache-key: gradle/libs.versions.toml
-          arguments: :testDebugUnitTest
+          arguments: app:testDebugUnitTest
