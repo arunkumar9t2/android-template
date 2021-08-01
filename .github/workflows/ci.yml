@@ -34,7 +34,6 @@ jobs:
           job-id: build
           read-only: ${{ github.ref != 'refs/heads/main' }}
           gradle-dependencies-cache-key: gradle/libs.versions.toml
-          execution-only-caches: true
           arguments: :app:assembleDebug --scan
   unit-tests:
     runs-on: ubuntu-latest
