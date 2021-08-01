@@ -29,3 +29,6 @@ val Project.deps: VersionCatalog get() = catalogs.named("deps")
 fun VersionCatalog.version(reference: String): String? = findVersion(reference)
   .orElse(null)
   ?.toString()
+
+fun VersionCatalog.dependency(reference: String): String? = findDependency(reference)
+  .orElse(null)?.toString()

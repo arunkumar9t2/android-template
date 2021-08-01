@@ -29,6 +29,10 @@ gradlePlugin {
       id = "android-binary"
       implementationClass = "android.AndroidBinary"
     }
+    create("buildCommon") {
+      id = "build-common"
+      implementationClass = "common.BuildCommonPlugin"
+    }
   }
 }
 
