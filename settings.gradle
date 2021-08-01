@@ -29,6 +29,10 @@ pluginManagement {
     id "com.gradle.enterprise" version "3.6.3"
   }
 }
+plugins {
+  id "com.gradle.enterprise"
+}
+
 enableFeaturePreview("VERSION_CATALOGS")
 
 dependencyResolutionManagement {
