@@ -15,7 +15,8 @@ jobs:
       - uses: burrunan/gradle-cache-action@v1
         name: lint
         with:
-          job-id: lint
+          debug: false
+          job-id: build
           read-only: ${{ github.ref != 'refs/heads/main' }}
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
@@ -33,6 +34,7 @@ jobs:
       - uses: burrunan/gradle-cache-action@v1
         name: build
         with:
+          debug: false
           job-id: build
           read-only: ${{ github.ref != 'refs/heads/main' }}
           gradle-dependencies-cache-key: |
@@ -52,7 +54,8 @@ jobs:
       - uses: burrunan/gradle-cache-action@v1
         name: unit-tests
         with:
-          job-id: unit-tests
+          debug: false
+          job-id: build
           read-only: ${{ github.ref != 'refs/heads/main' }}
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
