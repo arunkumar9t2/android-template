@@ -16,7 +16,7 @@ jobs:
         name: lint
         with:
           job-id: lint
-          gradle-version: wrapper
+          read-only: ${{ github.ref != 'refs/heads/main' }}
           gradle-dependencies-cache-key: gradle/libs.versions.toml
           arguments: app:lintDebug
   build:
@@ -32,7 +32,7 @@ jobs:
         name: build
         with:
           job-id: build
-          gradle-version: wrapper
+          read-only: ${{ github.ref != 'refs/heads/main' }}
           gradle-dependencies-cache-key: gradle/libs.versions.toml
           execution-only-caches: true
           arguments: :app:assembleDebug :app:assembleDebugUnitTest :app:assembleDebugAndroidTest --scan
@@ -50,6 +50,6 @@ jobs:
         name: unit-tests
         with:
           job-id: unit-tests
-          gradle-version: wrapper
+          read-only: ${{ github.ref != 'refs/heads/main' }}
           gradle-dependencies-cache-key: gradle/libs.versions.toml
           arguments: app:testDebugUnitTest --scan
