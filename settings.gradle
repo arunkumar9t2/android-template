@@ -26,6 +26,7 @@ pluginManagement {
     id "com.android.library" version "7.1.0-alpha05"
     id "org.jetbrains.kotlin.android" version "1.5.10"
     id "com.diffplug.spotless" version "5.11.0"
+    id "com.gradle.enterprise" version "3.6.3"
   }
 }
 enableFeaturePreview("VERSION_CATALOGS")
@@ -38,5 +39,17 @@ dependencyResolutionManagement {
     mavenCentral()
   }
 }
+
+def isCiServer = System.getenv().containsKey("CI")
+if (isCiServer) {
+  gradleEnterprise {
+    buildScan {
+      termsOfServiceUrl = "https://gradle.com/terms-of-service"
+      termsOfServiceAgree = "yes"
+      tag("CI")
+    }
+  }
+}
+
 rootProject.name = "relic"
 include ":app"
