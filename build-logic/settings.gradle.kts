@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+rootProject.name = "build-logic"
 
 pluginManagement {
   repositories {
@@ -28,7 +29,6 @@ dependencyResolutionManagement {
     google()
     mavenCentral()
   }
-  defaultLibrariesExtensionName.set("deps")
   versionCatalogs {
     create("deps") {
       from(files("../gradle/libs.versions.toml"))

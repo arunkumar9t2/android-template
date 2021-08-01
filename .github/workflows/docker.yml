@@ -9,7 +9,9 @@ on:
       - 'docker/**'
       - 'gradle**'
       - '**.gradle'
-      - 'buildSrc/**'
+      - '**.gradle.kts'
+      - 'gradle.properties'
+      - 'build-logic/**/Constants.kt'
 
 jobs:
   publish-docker:

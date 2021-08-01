@@ -16,6 +16,10 @@
 
 package android
 
+import ANDROID_COMPILE_SDK
+import ANDROID_MIN_SDK
+import ANDROID_RELEASE_VARIANT
+import ANDROID_TARGET_SDK
 import com.android.build.gradle.BaseExtension
 import gradle.deps
 import gradle.version
@@ -25,12 +29,6 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-val ANDROID_COMPILE_SDK = 30
-val ANDROID_MIN_SDK = 25
-val ANDROID_TARGET_SDK = 30
-
-val RELEASE_VARIANT = "release"
 
 internal fun Project.androidCommon() {
   apply(plugin = "org.jetbrains.kotlin.android")
@@ -49,7 +47,7 @@ internal fun Project.androidCommon() {
     }
 
     buildTypes {
-      named(RELEASE_VARIANT) {
+      named(ANDROID_RELEASE_VARIANT) {
         minifyEnabled(true)
         proguardFiles(
           getDefaultProguardFile("proguard-android-optimize.txt"),
