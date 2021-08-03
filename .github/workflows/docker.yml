@@ -10,7 +10,6 @@ on:
       - 'gradle**'
       - '**.gradle'
       - '**.gradle.kts'
-      - 'gradle.properties'
       - 'build-logic/**/Constants.kt'
 
 jobs:
@@ -23,9 +22,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 11
-
-      - name: Set Gradle permissions
-        run: sudo chmod +x ./gradlew
 
       - name: Build docker image and publish
         uses: elgohr/Publish-Docker-Github-Action@3.04
