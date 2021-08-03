@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
     tar \
     unzip \
-    wget
+    wget \
     zip
 
 # Set en locale
