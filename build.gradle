@@ -20,5 +20,3 @@ plugins {
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
-
-apply from: "docker/resolve-dependencies.gradle"
