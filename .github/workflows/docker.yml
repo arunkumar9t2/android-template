@@ -27,17 +27,7 @@ jobs:
       - name: Set Gradle permissions
         run: sudo chmod +x ./gradlew
 
-      - name: Prepare Gradle
-        run: |
-          cd docker
-          export GRADLE_USER_HOME="$(pwd)/cache/.gradle"
-          cd ..
-          ./gradlew --version --no-daemon -g $GRADLE_USER_HOME
-          ./gradlew resolveDependencies --no-daemon -g $GRADLE_USER_HOME
-          find $GRADLE_USER_HOME -name "*.lock" -type f -delete
-          find $GRADLE_USER_HOME -name "gc.properties" -type f -delete
-
-      - name: Publish to Registry
+      - name: Build docker image and publish
         uses: elgohr/Publish-Docker-Github-Action@3.04
         with:
           name: ${{ github.repository }}
