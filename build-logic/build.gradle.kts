@@ -18,6 +18,7 @@ import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 plugins {
   id("java-gradle-plugin")
   `kotlin-dsl`
+  id("org.jetbrains.kotlinx.binary-compatibility-validator")
 }
 
 kotlin {
