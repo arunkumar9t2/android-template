@@ -83,4 +83,4 @@ jobs:
           gradle-dependencies-cache-key: |
             gradle/libs.versions.toml
             build-logic/**/Constants.kt
-          arguments: build --scan
+          arguments: build
