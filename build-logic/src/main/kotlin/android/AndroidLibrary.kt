@@ -19,7 +19,7 @@ package android
 import gradle.ConfigurablePlugin
 import org.gradle.kotlin.dsl.apply
 
-class AndroidLibrary : ConfigurablePlugin({
+public class AndroidLibrary : ConfigurablePlugin({
   apply(plugin = "com.android.library")
 
   androidCommon()

@@ -13,10 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 
 plugins {
   id("java-gradle-plugin")
   `kotlin-dsl`
+}
+
+kotlin {
+  explicitApi = ExplicitApiMode.Strict
 }
 
 gradlePlugin {

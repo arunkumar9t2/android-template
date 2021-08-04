@@ -29,7 +29,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const val ANDROID_COMPILE_SDK = 30
-const val ANDROID_MIN_SDK = 25
-const val ANDROID_TARGET_SDK = 30
-const val ANDROID_RELEASE_VARIANT = "release"
+public const val ANDROID_COMPILE_SDK: Int = 30
+public const val ANDROID_MIN_SDK: Int = 25
+public const val ANDROID_TARGET_SDK: Int = 30
+public const val ANDROID_RELEASE_VARIANT: String = "release"

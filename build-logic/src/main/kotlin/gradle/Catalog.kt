@@ -22,13 +22,13 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.getByType
 
 
-val Project.catalogs get() = extensions.getByType<VersionCatalogsExtension>()
+internal val Project.catalogs get() = extensions.getByType<VersionCatalogsExtension>()
 
-val Project.deps: VersionCatalog get() = catalogs.named("deps")
+internal val Project.deps: VersionCatalog get() = catalogs.named("deps")
 
-fun VersionCatalog.version(reference: String): String? = findVersion(reference)
+internal fun VersionCatalog.version(reference: String): String? = findVersion(reference)
   .orElse(null)
   ?.toString()
 
-fun VersionCatalog.dependency(reference: String): String? = findDependency(reference)
+internal fun VersionCatalog.dependency(reference: String): String? = findDependency(reference)
   .orElse(null)?.toString()

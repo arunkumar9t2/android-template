@@ -41,7 +41,7 @@ import org.gradle.kotlin.dsl.configure
  * similar configuration should be added here. For domain specific build logic, prefer to create
  * dedicated plugins and apply them using `plugins {}` block.
  */
-class BuildCommonPlugin : Plugin<Project> {
+public class BuildCommonPlugin : Plugin<Project> {
   override fun apply(target: Project) {
     if (target != target.rootProject) {
       throw GradleException("build-common should be only applied to root project")

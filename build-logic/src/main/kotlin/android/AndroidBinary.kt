@@ -21,7 +21,7 @@ import gradle.ConfigurablePlugin
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
-class AndroidBinary : ConfigurablePlugin({
+public class AndroidBinary : ConfigurablePlugin({
   apply(plugin = "com.android.application")
 
   androidCommon()
