@@ -1,4 +1,4 @@
-name: Build logic workflow
+name: Buildscript workflow
 
 on:
   push:
