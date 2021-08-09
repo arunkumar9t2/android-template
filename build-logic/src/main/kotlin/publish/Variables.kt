@@ -13,29 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "build-logic"
 
-pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-  }
-  plugins {
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.6.0"
-  }
-}
-enableFeaturePreview("VERSION_CATALOGS")
+package publish
 
-dependencyResolutionManagement {
-  repositories {
-    google()
-    mavenCentral()
-    gradlePluginPortal()
-  }
-  versionCatalogs {
-    create("deps") {
-      from(files("../gradle/libs.versions.toml"))
-    }
-  }
-}
+internal const val OSSRH_USERNAME = "OSSRH_USERNAME"
+internal const val OSSRH_PASSWORD = "OSSRH_PASSWORD"
+internal const val SONATYPE_STAGING_PROFILE_ID = "SONATYPE_STAGING_PROFILE_ID"
+internal const val SIGNING_KEY_ID = "SIGNING_KEY_ID"
+internal const val SIGNING_KEY = "SIGNING_KEY"
+internal const val SIGNING_PASSWORD = "SIGNING_PASSWORD"
+
+
+internal val PublishVariables = listOf(
+  OSSRH_USERNAME,
+  OSSRH_PASSWORD,
+  SONATYPE_STAGING_PROFILE_ID,
+  SIGNING_KEY_ID,
+  SIGNING_KEY,
+  SIGNING_PASSWORD,
+)

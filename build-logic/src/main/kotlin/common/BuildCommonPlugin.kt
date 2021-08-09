@@ -18,10 +18,9 @@ package common
 
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
+import gradle.ConfigurablePlugin
 import gradle.deps
 import gradle.version
-import org.gradle.api.GradleException
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
@@ -41,33 +40,36 @@ import org.gradle.kotlin.dsl.configure
  * similar configuration should be added here. For domain specific build logic, prefer to create
  * dedicated plugins and apply them using `plugins {}` block.
  */
-public class BuildCommonPlugin : Plugin<Project> {
-  override fun apply(target: Project) {
-    if (target != target.rootProject) {
-      throw GradleException("build-common should be only applied to root project")
-    }
-    target.subprojects {
-      configureSpotless()
-    }
+public class BuildCommonPlugin : ConfigurablePlugin({
+  if (this != rootProject) {
+    error("build-common should be only applied to root project")
   }
 
-  /**
-   * Configures spotless plugin on given subproject.
-   */
-  private fun Project.configureSpotless() {
-    apply<SpotlessPlugin>()
-    configure<SpotlessExtension> {
-      kotlin {
-        targetExclude("$buildDir/**/*.kt", "bin/**/*.kt")
+  subprojects {
 
-        ktlint(deps.version("ktlint")).userData(
-          mapOf(
-            "indent_size" to "2",
-            "continuation_indent_size" to "2",
-            "disabled_rules" to "no-wildcard-imports"
-          )
+    configureSpotless()
+
+    // Configure API checks
+    // apply(plugin = "org.jetbrains.kotlinx.binary-compatibility-validator")
+  }
+})
+
+/**
+ * Configures spotless plugin on given subproject.
+ */
+private fun Project.configureSpotless() {
+  apply<SpotlessPlugin>()
+  configure<SpotlessExtension> {
+    kotlin {
+      targetExclude("$buildDir/**/*.kt", "bin/**/*.kt")
+
+      ktlint(deps.version("ktlint")).userData(
+        mapOf(
+          "indent_size" to "2",
+          "continuation_indent_size" to "2",
+          "disabled_rules" to "no-wildcard-imports"
         )
-      }
+      )
     }
   }
 }
