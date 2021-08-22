@@ -48,7 +48,6 @@ internal fun Project.androidCommon() {
 
     buildTypes {
       named(ANDROID_RELEASE_VARIANT) {
-        minifyEnabled(true)
         proguardFiles(
           getDefaultProguardFile("proguard-android-optimize.txt"),
           "proguard-rules.pro"
@@ -77,6 +76,9 @@ internal fun Project.androidCommon() {
   tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
       jvmTarget = "1.8"
+      freeCompilerArgs += listOf(
+        "-Xopt-in=kotlin.ExperimentalStdlibApi",
+      )
     }
   }
 }
