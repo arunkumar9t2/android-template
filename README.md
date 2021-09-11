@@ -1,4 +1,4 @@
-# Android template
+# Android Template
 
 Docs TBA
 
