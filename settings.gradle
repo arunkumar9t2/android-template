@@ -52,5 +52,6 @@ if (isCiServer) {
   }
 }
 
+//TODO Update project name
 rootProject.name = "relic"
 include ":app"

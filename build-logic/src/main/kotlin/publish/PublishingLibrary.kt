@@ -70,12 +70,14 @@ public class PublishingLibrary : ConfigurablePlugin({
             licenses {
               license {
                 name.set("Apache License, Version 2.0")
-                url.set("https://github.com/arunkumar9t2/base-android/blob/master/LICENSE")
+                //TODO Update project ULR
+                url.set("")
               }
             }
 
             developers {
               developer {
+                //TODO Update developer details
                 id.set("arunkumar9t2")
                 name.set("Arunkumar")
                 email.set("hi@arunkumar.dev")

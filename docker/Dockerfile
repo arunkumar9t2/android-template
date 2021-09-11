@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 
+# TODO Update authors and repo URL
 LABEL org.opencontainers.image.authors="hi@arunkumar.dev"
 LABEL org.opencontainers.image.source="https://github.com/arunkumar9t2/android-template"
 
@@ -42,6 +43,7 @@ RUN mkdir "$ANDROID_SDK_ROOT" && \
     rm commandlinetools.zip && \
     # Setup sdkmanager
     yes | sdkmanager --licenses && \
+    # TODO Add desired android version to docker image
     sdkmanager tools platform-tools "platforms;android-30" "build-tools;30.0.3" --verbose
 
 ENV GRADLE_USER_HOME=/github/home/.gradle
