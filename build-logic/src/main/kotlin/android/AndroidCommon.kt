@@ -76,6 +76,9 @@ internal fun Project.androidCommon() {
       jvmTarget = "1.8"
       freeCompilerArgs += listOf(
         "-Xopt-in=kotlin.ExperimentalStdlibApi",
+        "-Xopt-in=kotlin.RequiresOptIn",
+        "-Xopt-in=kotlin.experimental.ExperimentalTypeInference",
+        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
       )
     }
   }
