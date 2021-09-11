@@ -15,7 +15,7 @@
  */
 
 plugins {
-  id "android-binary"
+  id "android-binary-plugin"
 }
 
 android {
