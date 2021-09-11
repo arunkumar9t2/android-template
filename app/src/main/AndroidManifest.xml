@@ -16,7 +16,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.arunkumar.relic">
-
+    <!--TODO Change app package name, icon and theme-->
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"

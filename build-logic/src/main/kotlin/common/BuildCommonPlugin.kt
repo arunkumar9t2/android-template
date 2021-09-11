@@ -39,6 +39,10 @@ import org.gradle.kotlin.dsl.configure
  * Note: To limit cross configuration, only logic that absolutely need to exist such as linting and
  * similar configuration should be added here. For domain specific build logic, prefer to create
  * dedicated plugins and apply them using `plugins {}` block.
+ *
+ * Ideally we would like to cross configuration all together but it is still convenient when we need
+ * to configure all projects at a single place. If Gradle is evalue root build.gradle differently then
+ * it would be best of both worlds.
  */
 public class BuildCommonPlugin : ConfigurablePlugin({
   if (this != rootProject) {
@@ -49,10 +53,17 @@ public class BuildCommonPlugin : ConfigurablePlugin({
 
     configureSpotless()
 
-    // Configure API checks
-    // apply(plugin = "org.jetbrains.kotlinx.binary-compatibility-validator")
+    configureApiValidation()
   }
 })
+
+private fun Project.configureApiValidation() {
+  // Configure API checks
+  // TODO Verify if binary validator is needed
+  //apply(plugin = "org.jetbrains.kotlinx.binary-compatibility-validator")
+  //configure<ApiValidationExtension> {
+  //}
+}
 
 /**
  * Configures spotless plugin on given subproject.

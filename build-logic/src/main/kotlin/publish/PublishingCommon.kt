@@ -42,6 +42,7 @@ public class PublishingCommon : ConfigurablePlugin({
     }
   }
 
+  // TODO Configure module specific versioning if desired
   val versions = (rootProject.extra["moduleVersions"] as Map<String, String>)
 
   allprojects {

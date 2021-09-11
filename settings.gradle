@@ -22,7 +22,7 @@ pluginManagement {
     mavenCentral()
   }
   plugins {
-    // TODO Replace with version catalogs once ready
+    // TODO Replace with version catalogs once plugins are supported ready
     id "com.gradle.enterprise" version "3.6.3"
   }
 }

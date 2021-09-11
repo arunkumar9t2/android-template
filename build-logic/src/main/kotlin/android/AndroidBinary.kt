@@ -16,6 +16,9 @@
 
 package android
 
+import ANDROID_PACKAGE_NAME
+import ANDROID_VERSION_CODE
+import ANDROID_VERSION_NAME
 import com.android.build.api.dsl.ApplicationExtension
 import gradle.ConfigurablePlugin
 import org.gradle.kotlin.dsl.apply
@@ -28,9 +31,9 @@ public class AndroidBinary : ConfigurablePlugin({
 
   configure<ApplicationExtension> {
     defaultConfig {
-      applicationId = "dev.arunkumar.relic"
-      versionCode = 1
-      versionName = "1.0"
+      applicationId = ANDROID_PACKAGE_NAME
+      versionCode = ANDROID_VERSION_CODE
+      versionName = ANDROID_VERSION_NAME
     }
   }
 })
