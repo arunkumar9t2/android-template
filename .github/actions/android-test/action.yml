@@ -8,11 +8,11 @@ inputs:
   build-command:
     description: 'Command to execute for building Android Tests'
     required: true
-    default: './gradlew assembleDebugAndroidTest'
+    default: 'assembleDebugAndroidTest'
   test-command:
     description: 'Command to execute for running Android Tests'
     required: true
-    default: './gradlew connectedDebugAndroidTest'
+    default: 'connectedDebugAndroidTest'
 runs:
   using: "composite"
   steps:
