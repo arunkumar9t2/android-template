@@ -57,7 +57,7 @@ runs:
     - name: Run UI Tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: ${{ matrix.api-level }}
+        api-level: ${{ inputs.api-level }}
         force-avd-creation: false
         emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
         disable-animations: true
