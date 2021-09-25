@@ -68,10 +68,14 @@ jobs:
             build-logic/**/Constants.kt
           arguments: app:testDebugUnitTest --scan
   instrumentation-tests:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository }}:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Run instrumentation tests
         uses: ./.github/actions/android-test

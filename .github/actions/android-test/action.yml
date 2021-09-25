@@ -45,11 +45,11 @@ runs:
           ~/.android/adb*
         key: avd-${{ inputs.api-level }}
 
-    - name: Create AVD and generate snapshot for caching
+    - name: Run UI Tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: ${{ inputs.api-level }}
+        api-level: ${{ matrix.api-level }}
         force-avd-creation: false
-        emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-        disable-animations: false
-        script: echo "Generated AVD snapshot for caching."
+        emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+        disable-animations: true
+        script: ./gradlew ${{ inputs.test-command }}
