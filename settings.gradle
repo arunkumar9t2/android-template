@@ -53,5 +53,5 @@ if (isCiServer) {
 }
 
 //TODO Update project name
-rootProject.name = "relic"
+rootProject.name = "android-template"
 include ":app"
