@@ -24,6 +24,7 @@ import gradle.version
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
+import org.jetbrains.dokka.gradle.DokkaPlugin
 
 /**
  * Common build plugin that should be applied to root `build.gradle` file. This plugin can be used
@@ -48,9 +49,9 @@ public class BuildCommonPlugin : ConfigurablePlugin({
   if (this != rootProject) {
     error("build-common should be only applied to root project")
   }
+  configureDokka()
 
   subprojects {
-
     configureSpotless()
 
     configureApiValidation()
@@ -84,3 +85,8 @@ private fun Project.configureSpotless() {
     }
   }
 }
+
+private fun Project.configureDokka() {
+  apply<DokkaPlugin>()
+}
+

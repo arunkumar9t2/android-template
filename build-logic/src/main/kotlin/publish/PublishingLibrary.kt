@@ -28,14 +28,16 @@ import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.*
 import org.gradle.plugins.signing.SigningExtension
 import org.jetbrains.dokka.gradle.AbstractDokkaTask
+import org.jetbrains.dokka.gradle.DokkaPlugin
 
 
 public class PublishingLibrary : ConfigurablePlugin({
   apply(plugin = "maven-publish")
   apply(plugin = "signing")
-  apply(plugin = "org.jetbrains.dokka")
 
   val isAndroid = project.plugins.hasPlugin("com.android.library")
+
+  configureDokka()
 
   // Setup sources jar
   val sourceJarTask = registerSourceJarTask()
@@ -70,7 +72,7 @@ public class PublishingLibrary : ConfigurablePlugin({
             licenses {
               license {
                 name.set("Apache License, Version 2.0")
-                //TODO Update project ULR
+                //TODO Update project URL
                 url.set("")
               }
             }
@@ -91,6 +93,10 @@ public class PublishingLibrary : ConfigurablePlugin({
 
   configureSigning()
 })
+
+private fun Project.configureDokka() {
+  apply<DokkaPlugin>()
+}
 
 private fun Project.registerJavaDocsTask(): TaskProvider<Jar> {
   val javaDocsTask = tasks.register<Jar>("javadocJar")
