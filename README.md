@@ -1,6 +1,6 @@
 # Android Template
 
-<img src="https://img.shields.io/github/workflow/status/arunkumar9t2/android-template/CI?logo=GitHub&style=flat-square">
+<a href="https://github.com/arunkumar9t2/android-template/actions/workflows/ci.yml"><img src="https://img.shields.io/github/workflow/status/arunkumar9t2/android-template/CI?logo=GitHub&style=flat-square"/></a>
 
 Docs TBA
 
