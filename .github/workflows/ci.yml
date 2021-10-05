@@ -106,7 +106,7 @@ jobs:
             gradle/libs.versions.toml
             build-logic/**/Constants.kt
           # TODO Change task to publishReleasePublicationToSonatypeRepository
-          arguments: help -Psnapshot --rerun-tasks
+          arguments: publishReleasePublicationToSonatypeRepository -Psnapshot --rerun-tasks
   publish-release:
     runs-on: ubuntu-latest
     needs: [ unit-tests, build, lint, ui-tests ]
