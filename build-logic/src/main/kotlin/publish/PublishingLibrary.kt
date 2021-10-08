@@ -66,8 +66,8 @@ public class PublishingLibrary : ConfigurablePlugin({
 
           pom {
             name.set(project.name)
-            description.set(project.description)
-            url.set(findProject("website").toString())
+            description.set(findProperty("description").toString())
+            url.set(findProperty("website").toString())
 
             licenses {
               license {
