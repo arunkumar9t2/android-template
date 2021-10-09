@@ -49,6 +49,8 @@ public class PublishingLibrary : ConfigurablePlugin({
     add("archives", javaDocsTask)
   }
 
+  val website = findProperty("website").toString()
+
   // Setup publishing
   afterEvaluate {
     configure<PublishingExtension> {
@@ -64,15 +66,18 @@ public class PublishingLibrary : ConfigurablePlugin({
             from(components["java"])
           }
 
+          artifact(sourceJarTask)
+          artifact(javaDocsTask)
+
           pom {
             name.set(project.name)
             description.set(findProperty("description").toString())
-            url.set(findProperty("website").toString())
+            url.set(website)
 
             licenses {
               license {
                 name.set("Apache License, Version 2.0")
-                //TODO Update project URL
+                //TODO Update License URL
                 url.set("")
               }
             }
@@ -84,6 +89,12 @@ public class PublishingLibrary : ConfigurablePlugin({
                 name.set("Arunkumar")
                 email.set("hi@arunkumar.dev")
               }
+            }
+
+            scm {
+              connection.set("${website}.git")
+              developerConnection.set("${website}.git")
+              url.set(website)
             }
           }
         }
