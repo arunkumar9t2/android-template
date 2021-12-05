@@ -18,6 +18,7 @@ package common
 
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
+import com.github.benmanes.gradle.versions.VersionsPlugin
 import gradle.ConfigurablePlugin
 import gradle.deps
 import gradle.version
@@ -56,6 +57,8 @@ public class BuildCommonPlugin : ConfigurablePlugin({
 
     configureApiValidation()
   }
+
+  apply<VersionsPlugin>()
 })
 
 private fun Project.configureApiValidation() {
