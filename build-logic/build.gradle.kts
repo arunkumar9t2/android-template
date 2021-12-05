@@ -51,6 +51,7 @@ gradlePlugin {
 }
 
 dependencies {
+  implementation(deps.gradle.dependency.updates)
   implementation(deps.agp)
   implementation(deps.kotlin)
   implementation(deps.spotless)
