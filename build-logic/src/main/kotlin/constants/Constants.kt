@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Arunkumar
+ * Copyright 2022 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ public const val ANDROID_VERSION_NAME: String = "1.0"
 public typealias ModuleVersion = Map<String, String>
 
 @OptIn(ExperimentalStdlibApi::class)
-public val ModuleVersions: ModuleVersion = buildMap<String, String> {
+public val ModuleVersions: ModuleVersion = buildMap {
   // TODO Configure module specific versions
   // Key - gradle module name
   // Value - publishing version name
