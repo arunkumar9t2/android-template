@@ -30,7 +30,7 @@
  * limitations under the License.
  */
 // TODO Update Android compile, min and target SDK versionss
-public const val ANDROID_COMPILE_SDK: Int = 31
+public const val ANDROID_COMPILE_SDK: Int = 32
 public const val ANDROID_MIN_SDK: Int = 25
 public const val ANDROID_TARGET_SDK: Int = 30
 
