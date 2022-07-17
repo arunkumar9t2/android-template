@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Arunkumar
+ * Copyright 2022 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,21 @@
 
 package android
 
+import com.android.build.api.variant.AndroidComponentsExtension
+import com.android.build.api.variant.ApplicationAndroidComponentsExtension
+import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
 public fun Project.android(builder: BaseExtension.() -> Unit) {
   configure(builder)
+}
+
+internal fun Project.androidComponents(
+  builder: AndroidComponentsExtension<*, *, *>.() -> Unit
+) {
+  configure<LibraryAndroidComponentsExtension> { builder(this) }
+  configure<ApplicationAndroidComponentsExtension> { builder(this) }
+  // TODO(arun) Add test and dynamic features?
 }

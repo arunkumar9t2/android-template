@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Arunkumar
+ * Copyright 2022 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,10 @@ import ANDROID_RELEASE_VARIANT
 import ANDROID_TARGET_SDK
 import gradle.deps
 import gradle.version
+import kt.kotlinCommon
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 internal fun Project.androidCommon() {
   apply(plugin = "org.jetbrains.kotlin.android")
@@ -71,17 +70,5 @@ internal fun Project.androidCommon() {
     }
   }
 
-  tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-      jvmTarget = "1.8"
-      freeCompilerArgs += listOf(
-        "-Xopt-in=kotlin.ExperimentalStdlibApi",
-        "-Xopt-in=kotlin.RequiresOptIn",
-        "-Xopt-in=kotlin.time.ExperimentalTime",
-        "-Xopt-in=kotlin.experimental.ExperimentalTypeInference",
-        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-        //"-Xexplicit-api=strict" // TODO Uncomment if strict API is needed
-      )
-    }
-  }
+  kotlinCommon()
 }

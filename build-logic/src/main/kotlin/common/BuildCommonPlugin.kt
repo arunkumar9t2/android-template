@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Arunkumar
+ * Copyright 2022 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package common
 
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
-import com.github.benmanes.gradle.versions.VersionsPlugin
 import gradle.ConfigurablePlugin
 import gradle.deps
 import gradle.version
@@ -26,6 +25,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.dokka.gradle.DokkaPlugin
+import com.github.benmanes.gradle.versions.VersionsPlugin as DependencyUpdatesPlugin
 
 /**
  * Common build plugin that should be applied to root `build.gradle` file. This plugin can be used
@@ -58,7 +58,7 @@ public class BuildCommonPlugin : ConfigurablePlugin({
     configureApiValidation()
   }
 
-  apply<VersionsPlugin>()
+  apply<DependencyUpdatesPlugin>()
 })
 
 private fun Project.configureApiValidation() {
