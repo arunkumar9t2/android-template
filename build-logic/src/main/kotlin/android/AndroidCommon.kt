@@ -30,6 +30,8 @@ import org.gradle.kotlin.dsl.apply
 internal fun Project.androidCommon() {
   apply(plugin = "org.jetbrains.kotlin.android")
 
+  kotlinCommon()
+
   android {
     compileSdkVersion(ANDROID_COMPILE_SDK)
 
@@ -70,5 +72,7 @@ internal fun Project.androidCommon() {
     }
   }
 
-  kotlinCommon()
+  androidComponents {
+
+  }
 }
