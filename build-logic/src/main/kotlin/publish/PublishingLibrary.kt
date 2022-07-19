@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Arunkumar
+ * Copyright 2022 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,8 +50,10 @@ public class PublishingLibrary : ConfigurablePlugin({
   }
 
   val website = findProperty("website").toString()
+  val desc = if (description.isNullOrEmpty()) {
+    findProperty("description").toString()
+  } else description
 
-  // Setup publishing
   afterEvaluate {
     configure<PublishingExtension> {
       publications {
@@ -71,7 +73,7 @@ public class PublishingLibrary : ConfigurablePlugin({
 
           pom {
             name.set(project.name)
-            description.set(findProperty("description").toString())
+            description.set(desc)
             url.set(website)
 
             licenses {
@@ -123,13 +125,12 @@ private fun Project.registerJavaDocsTask(): TaskProvider<Jar> {
 private fun Project.registerSourceJarTask(): TaskProvider<Jar> {
   val sourcesJar = "sourcesJar"
   val isAndroid = project.plugins.hasPlugin("com.android.library")
-  val android = extensions.getByType<BaseExtension>()
 
   return tasks.register<Jar>(sourcesJar) {
     archiveClassifier.set("sources")
     if (isAndroid) {
       from(project.provider {
-        android
+        extensions.getByType<BaseExtension>()
           .sourceSets
           .matching { it.name == "main" }
           .flatMap { it.java.srcDirs + (it.kotlin as AndroidSourceDirectorySet).srcDirs }
