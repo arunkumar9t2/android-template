@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package gradle
+package kt
 
-import org.gradle.api.Project
-import org.gradle.kotlin.dsl.findByType
+import gradle.ConfigurablePlugin
+import javaplugin.JavaLibrary
+import org.gradle.kotlin.dsl.apply
 
-/**
- * Configures a gradle extension if it exists and does nothing otherwise
- */
-internal inline fun <reified T : Any> Project.configureIfExist(builder: T.() -> Unit) {
-  extensions.findByType<T>()?.apply(builder)
-}
+public class KotlinLibrary : ConfigurablePlugin({
+  apply<JavaLibrary>()
+  apply(plugin = "org.jetbrains.kotlin.jvm")
+  kotlinCommon()
+  // TODD(arun) Make kapt configurable from extension
+})

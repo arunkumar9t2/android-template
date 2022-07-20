@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package gradle
+package javaplugin
 
+import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.findByType
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.kotlin.dsl.configure
 
-/**
- * Configures a gradle extension if it exists and does nothing otherwise
- */
-internal inline fun <reified T : Any> Project.configureIfExist(builder: T.() -> Unit) {
-  extensions.findByType<T>()?.apply(builder)
+public fun Project.javaCommon() {
+  configure<JavaPluginExtension> {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
 }

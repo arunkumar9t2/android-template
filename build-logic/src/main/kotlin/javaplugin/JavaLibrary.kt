@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package gradle
+package javaplugin
 
-import org.gradle.api.Project
-import org.gradle.kotlin.dsl.findByType
+import gradle.ConfigurablePlugin
+import org.gradle.api.plugins.JavaPlugin
+import org.gradle.kotlin.dsl.apply
 
-/**
- * Configures a gradle extension if it exists and does nothing otherwise
- */
-internal inline fun <reified T : Any> Project.configureIfExist(builder: T.() -> Unit) {
-  extensions.findByType<T>()?.apply(builder)
-}
+public class JavaLibrary : ConfigurablePlugin({
+  apply<JavaPlugin>()
+  javaCommon()
+})

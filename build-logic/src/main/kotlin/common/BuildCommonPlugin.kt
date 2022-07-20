@@ -28,23 +28,27 @@ import org.jetbrains.dokka.gradle.DokkaPlugin
 import com.github.benmanes.gradle.versions.VersionsPlugin as DependencyUpdatesPlugin
 
 /**
- * Common build plugin that should be applied to root `build.gradle` file. This plugin can be used
- * to add logic that is meant to be added to all subprojects in the current build.
+ * Common build plugin that should be applied to root `build.gradle`
+ * file. This plugin can be used to add logic that is meant to be added
+ * to all subprojects in the current build.
  *
  * Example
+ *
  * ```kotlin
  *  plugins {
  *    id "build-common"
  *  }
  * ```
  *
- * Note: To limit cross configuration, only logic that absolutely need to exist such as linting and
- * similar configuration should be added here. For domain specific build logic, prefer to create
- * dedicated plugins and apply them using `plugins {}` block.
+ * Note: To limit cross configuration, only logic that absolutely need
+ * to exist such as linting and similar configuration should be added
+ * here. For domain specific build logic, prefer to create dedicated
+ * plugins and apply them using `plugins {}` block.
  *
- * Ideally we would like to cross configuration all together but it is still convenient when we need
- * to configure all projects at a single place. If Gradle is evalue root build.gradle differently then
- * it would be best of both worlds.
+ * Ideally we would like to cross configuration all together but it is
+ * still convenient when we need to configure all projects at a single
+ * place. If Gradle is evalue root build.gradle differently then it
+ * would be best of both worlds.
  */
 public class BuildCommonPlugin : ConfigurablePlugin({
   if (this != rootProject) {
@@ -69,22 +73,23 @@ private fun Project.configureApiValidation() {
   //}
 }
 
-/**
- * Configures spotless plugin on given subproject.
- */
+/** Configures spotless plugin on given subproject. */
 private fun Project.configureSpotless() {
   apply<SpotlessPlugin>()
   configure<SpotlessExtension> {
     kotlin {
+      target("**/*.kt")
       targetExclude("$buildDir/**/*.kt", "bin/**/*.kt")
 
-      ktlint(deps.version("ktlint")).userData(
-        mapOf(
-          "indent_size" to "2",
-          "continuation_indent_size" to "2",
-          "disabled_rules" to "no-wildcard-imports"
+      ktlint(deps.version("ktlint"))
+        .setUseExperimental(true)
+        .editorConfigOverride(
+          mapOf(
+            "indent_size" to "2",
+            "continuation_indent_size" to "2",
+            "disabled_rules" to "no-wildcard-imports,filename",
+          )
         )
-      )
     }
   }
 }

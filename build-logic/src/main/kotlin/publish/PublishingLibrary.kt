@@ -54,6 +54,7 @@ public class PublishingLibrary : ConfigurablePlugin({
     findProperty("description").toString()
   } else description
 
+  // Setup publishing
   afterEvaluate {
     configure<PublishingExtension> {
       publications {
