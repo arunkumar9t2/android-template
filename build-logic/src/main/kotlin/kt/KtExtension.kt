@@ -16,12 +16,14 @@
 
 package kt
 
-import gradle.ConfigurablePlugin
-import javaplugin.JavaLibrary
-import org.gradle.kotlin.dsl.apply
+import org.gradle.api.Action
+import kotlin.properties.Delegates.observable
 
-public class KotlinLibrary : ConfigurablePlugin({
-  apply<JavaLibrary>()
-  apply(plugin = "org.jetbrains.kotlin.jvm")
-  kotlinCommon()
-})
+public open class KtExtension(
+  private val onKaptChanged: Action<Boolean>,
+) {
+
+  public open var kapt: Boolean by observable(false) { _, _, newValue ->
+    onKaptChanged.execute(newValue)
+  }
+}
