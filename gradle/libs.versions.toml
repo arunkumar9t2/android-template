@@ -4,12 +4,13 @@ ktlint = "0.46.1"
 dokka = "1.5.0"
 kotlin = "1.6.21"
 coroutines = "1.5.0"
+binary-validator = "0.11.0"
 
 [libraries]
 agp = "com.android.tools.build:gradle:7.2.1"
 kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
-kotlinx-binaryvalidator = "org.jetbrains.kotlinx:binary-compatibility-validator:0.6.0"
+kotlinx-binaryvalidator = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version.ref = "binary-validator" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 androidx-core = "androidx.core:core-ktx:1.7.0"
@@ -36,3 +37,6 @@ androidx-test-orchestrator = "androidx.test:orchestrator:1.4.0"
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 turbine = "app.cash.turbine:turbine:0.7.0"
+
+[plugins]
+binary-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-validator" }
