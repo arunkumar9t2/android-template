@@ -12,6 +12,11 @@ local.properties
 .idea/compiler.xml
 /.idea/jarRepositories.xml
 .idea/shelf
+/.idea/uiDesigner.xml
+/.idea/libraries-with-intellij-classes.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/git_toolbox_prj.xml
+
 .DS_Store
 /build
 /captures
@@ -52,6 +57,3 @@ _sandbox
 .vscode/
 
 site/
-/.idea/uiDesigner.xml
-/.idea/libraries-with-intellij-classes.xml
-/.idea/inspectionProfiles/Project_Default.xml
