@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Arunkumar
+ * Copyright 2023 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,8 +36,8 @@ internal fun Project.androidCommon() {
     compileSdkVersion(ANDROID_COMPILE_SDK)
 
     compileOptions {
-      sourceCompatibility = JavaVersion.VERSION_1_8
-      targetCompatibility = JavaVersion.VERSION_1_8
+      sourceCompatibility = JavaVersion.VERSION_11
+      targetCompatibility = JavaVersion.VERSION_11
     }
 
     defaultConfig {

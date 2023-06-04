@@ -1,4 +1,22 @@
 /*
+ * Copyright 2023 Arunkumar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
+/*
  * Copyright 2022 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,8 +48,8 @@
  * limitations under the License.
  */
 // TODO Update Android compile, min and target SDK versionss
-public const val ANDROID_COMPILE_SDK: Int = 32
-public const val ANDROID_MIN_SDK: Int = 25
+public const val ANDROID_COMPILE_SDK: Int = 33
+public const val ANDROID_MIN_SDK: Int = 26
 public const val ANDROID_TARGET_SDK: Int = 30
 
 // TODO Update Android package name
@@ -40,6 +58,10 @@ public const val ANDROID_RELEASE_VARIANT: String = "release"
 public const val ANDROID_DEBUG_VARIANT: String = "debug"
 public const val ANDROID_VERSION_CODE: Int = 1
 public const val ANDROID_VERSION_NAME: String = "1.0"
+
+// TODO Update Kotlin versions
+public val KOTLIN_API_VERSION: KotlinVersion = KotlinVersion.KOTLIN_1_8
+public val KOTLIN_LANG_VERSION: KotlinVersion = KotlinVersion.KOTLIN_1_8
 
 public typealias ModuleVersion = Map<String, String>
 

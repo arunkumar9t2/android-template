@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Arunkumar
+ * Copyright 2023 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,29 @@
 
 package kt
 
+import KOTLIN_API_VERSION
+import KOTLIN_LANG_VERSION
 import kotlinx.validation.sourceSets
 import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.the
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinCommonCompilerOptions
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 internal fun Project.kotlinCommon() {
-  tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-      jvmTarget = "1.8"
-      freeCompilerArgs = freeCompilerArgs + listOf(
+  the<KotlinProjectExtension>().apply {
+    jvmToolchain(11)
+  }
+
+  tasks.withType<KotlinCompilationTask<KotlinCommonCompilerOptions>>().configureEach {
+    compilerOptions {
+      apiVersion.set(KOTLIN_API_VERSION)
+      languageVersion.set(KOTLIN_LANG_VERSION)
+      freeCompilerArgs.addAll(
         "-Xopt-in=kotlin.ExperimentalStdlibApi",
         "-Xopt-in=kotlin.RequiresOptIn",
         "-Xopt-in=kotlin.time.ExperimentalTime",

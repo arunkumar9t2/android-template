@@ -21,19 +21,18 @@ plugins {
   id("org.jetbrains.kotlinx.binary-compatibility-validator")
 }
 
+java {
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
+}
+
 kotlin {
   explicitApi = ExplicitApiMode.Strict
 }
 
-
-java {
-  sourceCompatibility = JavaVersion.VERSION_1_8
-  targetCompatibility = JavaVersion.VERSION_1_8
-}
-
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "11"
     freeCompilerArgs += listOf(
       "-Xopt-in=kotlin.ExperimentalStdlibApi",
       "-Xopt-in=kotlin.RequiresOptIn",
@@ -44,6 +43,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
     )
   }
 }
+
 gradlePlugin {
   plugins {
     create("javaLibrary") {
