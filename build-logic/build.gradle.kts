@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Arunkumar
+ * Copyright 2023 Arunkumar
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,35 @@ kotlin {
   explicitApi = ExplicitApiMode.Strict
 }
 
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+  kotlinOptions {
+    jvmTarget = "1.8"
+    freeCompilerArgs += listOf(
+      "-Xopt-in=kotlin.ExperimentalStdlibApi",
+      "-Xopt-in=kotlin.RequiresOptIn",
+      "-Xopt-in=kotlin.time.ExperimentalTime",
+      "-Xopt-in=kotlin.experimental.ExperimentalTypeInference",
+      "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+      "-Xexplicit-api=strict"
+    )
+  }
+}
 gradlePlugin {
   plugins {
+    create("javaLibrary") {
+      id = "java-library-plugin"
+      implementationClass = "javaplugin.JavaLibrary"
+    }
+    create("kotlinLibrary") {
+      id = "kotlin-library-plugin"
+      implementationClass = "kt.KotlinLibrary"
+    }
     create("androidLibrary") {
       id = "android-library-plugin"
       implementationClass = "android.AndroidLibrary"
